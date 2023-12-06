@@ -25,7 +25,7 @@ export default function BlogDetailPage({ post }: BlogPageProps) {
 		<Box>
 			<Seo
 				data={{
-					title: `${post.title} | Bog`,
+					title: `${post.title}`,
 					description: post.description,
 					url: `${process.env.HOST_URL}/blog/${post.slug}`,
 					thumbnailUrl: post.thumbnailUrl || '',
@@ -37,7 +37,6 @@ export default function BlogDetailPage({ post }: BlogPageProps) {
 				<p>{post.title}</p>
 				<p>{post.author?.name}</p>
 				<p>{post.description}</p>
-				<p>{post.mdContent}</p>
 
 				<div dangerouslySetInnerHTML={{ __html: post.htmlContent || '' }}></div>
 

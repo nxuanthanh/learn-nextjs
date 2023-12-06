@@ -2,8 +2,6 @@ import { authApi } from '@/api'
 import useSWR from 'swr'
 import { PublicConfiguration } from 'swr/dist/types'
 
-// Auth --> Protected Pages
-// <Auth>{children}</Auth>
 export function useAuth(options?: Partial<PublicConfiguration>) {
 	const {
 		data: profile,
@@ -17,7 +15,7 @@ export function useAuth(options?: Partial<PublicConfiguration>) {
 
 	const firstLoading = profile === undefined && error === undefined
 
-	async function login() {
+	const onLogin = async ()=> {
 		await authApi.login({
 			username: 'test1',
 			password: '123123',
@@ -26,7 +24,7 @@ export function useAuth(options?: Partial<PublicConfiguration>) {
 		await mutate()
 	}
 
-	async function logout() {
+	const onLogout = async ()=> {
 		await authApi.logout()
 		mutate(null, false)
 	}
@@ -34,8 +32,8 @@ export function useAuth(options?: Partial<PublicConfiguration>) {
 	return {
 		profile,
 		error,
-		login,
-		logout,
 		firstLoading,
+		onLogin,
+		onLogout,
 	}
 }

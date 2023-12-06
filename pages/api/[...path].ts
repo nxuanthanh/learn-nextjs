@@ -3,9 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import httpProxy from 'http-proxy'
 import Cookies from 'cookies'
 
-// type Data = {
-// 	name: string
-// }
 
 export const config = {
 	api: {
